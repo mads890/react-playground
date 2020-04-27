@@ -21,8 +21,11 @@ class RouletteGun extends React.Component {
     }
     triggerFunct = () => {
         this.setState({ spinningTheChamber: true, action: 'Spinning the chamber and pulling the trigger...' });
-        setTimeout(this.chamberSelect, 2000);
+        this.timeout = setTimeout(this.chamberSelect, 2000);
 
+    }
+    componentWillUnmount() {
+        clearTimeout(this.timeout)
     }
     render() {
         return (
